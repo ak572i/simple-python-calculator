@@ -1,46 +1,55 @@
 print("Basic Calculator")
-def addition(n1,n2):
-  print("The answer is " + str(n1+n2))
-def substraction(n1,n2):
-  print("The answer is " + str(n1-n2))
-def multiplication(n1,n2):
-  print("The answer is " + str(n1*n2))
-def division(n1,n2):
-  if n2 != 0:
-    print("The answer is " + str(n1*n2))
-  else:
-    print("Cannot divide by 0!")
-def modulus(n1,n2):
-  if n2 != 0:
-    print("The answer is " + str(n1%n2))
-  else:
-    print("Cannot modulus by 0!")
+numb1 = 0
+numb2 = 0
+def add(n1,n2):
+    print(f"{n1} + {n2} = {n1+n2}")
+def sub(n1,n2):
+    print(f"{n1} - {n2} = {n1-n2}")
+def mult(n1,n2):
+    print(f"{n1} * {n2} = {n1*n2}")
+def div(n1,n2):
+    print(f"{n1} + {n2} = {n1/n2}")
+def clerror(test):
+    while True:
+        try:
+            clean = int(input(test))
+            return clean
+        except ValueError:
+            print("Enter a Number!")
 def calc():
-  print("Enter 1 for Addition")
-  print("Enter 2 for Substraction")
-  print("Enter 3 for Multiplication")
-  print("Enter 4 for Division")
-  print("Enter 5 for Modulus")
-  print(" ")
-  sel = int(input("Enter here: "))
-  if sel in range(1,6):
-    nu1 = int(input("Enter first number here: "))
-    nu2 = int(input("Enter second number here: "))
-    if sel == 1:
-      addition(nu1,nu2)
-    elif sel == 2:
-      substraction(nu1,nu2)
-    elif sel == 3:
-      multiplication(nu1,nu2)
-    elif sel == 4:
-      division(nu1,nu2)
-    elif sel == 5:
-      modulus(nu1,nu2)
-  else:
-    print("Invalid Number!")
+    global numb1
+    global numb2
+    print("Enter 1 for Addition.\nEnter 2 for Substraction\nEnter 3 for Multiplication\nEnter 4 for Division.")
+    while True:
+        try:
+            choice = int(input("Enter Choice here: "))
+            if choice not in [1,2,3,4]:
+                continue
+            break
+        except ValueError:
+            print("Enter a Number!")
+            continue
+    numb1 = clerror("Enter First number here! ")
+    numb2 = clerror("Enter second number here! ")
+    if choice == 1:
+        add(numb1,numb2)
+    if choice == 2:
+        sub(numb1,numb2)
+    if choice == 3:
+        mult(numb1,numb2)
+    if choice == 4:
+        div(numb1,numb2)
 while True:
-  calc()
-  con = input("Continue? (y/n): ")
-  if con == "n":
-    print("Goodbye!")
-    break
+    calc()
+    cont = input("Continue? (y/n)")
+    while True:
+        if cont not in ["y","n"]:
+            print("Enter either (y/n).")
+            cont == input("Continue? (y/n)")
+        elif cont in ["y","n"]:
+            break
+    if cont == "y":
+        continue
+    if cont == "n":
+        print("Goodbye!")
+        break
